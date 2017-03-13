@@ -1,0 +1,473 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+$color-firefox-light-orange: #ff9500;
+
+.moz-universal-nav {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+
+    a:link,
+    a:visited {
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+        @include transition(color 0.1s ease-in-out);
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .nav-button-menu {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        font-size: 0;
+        background: transparent;
+        border: none;
+        float: left;
+        height: 25px;
+        margin: 13px 0;
+        width: 50px;
+        padding: 0;
+
+        .p1,
+        .p2,
+        .p3 {
+            transition: transform .2s ease-in-out;
+        }
+
+        &:hover,
+        &:active {
+            // background-image: url('/media/img/nav/menu-open.svg');
+
+            .p1 {
+                transform: translateX(4px);
+            }
+
+            .p2 {
+                transform: translateX(-3px);
+            }
+
+            .p3 {
+                transform: translateX(4px);
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-moz-focus-inner {
+            border: none;
+        }
+    }
+
+    .nav-logo {
+        @include transition(fill 0.1s ease-in-out);
+        @include font-size(15px);
+        float: left;
+        height: 25px;
+        margin: 0 0 0 10px;
+        padding: 13px 0;
+
+        a {
+            display: block;
+            height: 25px;
+        }
+
+        &:hover .p,
+        &:focus .p,
+        &:active .p {
+            @include transition(fill 0.1s ease-in-out);
+            fill: #646464;
+        }
+
+        @media #{$mq-desktop} {
+            margin-left: 17px;
+        }
+    }
+
+    .nav-horizontal-menu {
+        @include clearfix;
+        margin-left: 10px;
+        padding: 40px 0 10px 0;
+        position: relative;
+        overflow: hidden;
+
+        @media #{$mq-desktop} {
+            margin-left: 17px;
+        }
+    }
+
+    .nav-primary-links {
+        display: none;
+        float: left;
+        list-style-type: none;
+        margin: 0 0 0 10px;
+        padding: 13px 0;
+
+        &> li {
+            display: inline-block;
+            padding: 0 5px;
+
+            a:hover,
+            a:active,
+            a:focus {
+                text-decoration: none;
+            }
+
+            a:focus {
+                outline: none;
+            }
+        }
+
+        @media #{$mq-tablet} {
+            display: block;
+        }
+
+        @media #{$mq-desktop} {
+            @include font-size(17px);
+            margin-left: 21px;
+
+            &> li {
+                padding: 0 21px;
+            }
+        }
+    }
+
+    .nav-language-picker-form {
+        float: right;
+        margin: 10px 22px 10px 10px;
+
+        label {
+            @include visually-hidden;
+        }
+
+        select {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            @include fira-sans-light;
+            @include font-size(14px);
+            background: none;
+            border-radius: 0;
+            border: none;
+            color: $color-mozgray;
+            width: 55px;
+        }
+
+        @media #{$mq-desktop} {
+            margin-right: 42px;
+        }
+    }
+}
+
+.moz-nav-open .moz-universal-nav .nav-button-menu {
+    .p1 {
+        transform: translateX(4px);
+    }
+
+    .p2 {
+        transform: translateX(-3px);
+    }
+
+    .p3 {
+        transform: translateX(4px);
+    }
+}
+
+.moz-universal-nav-drawer {
+    background: #000;
+    bottom: 0;
+    color: #fff;
+    left: -320px;
+    padding: 20px 42px;
+    position: absolute;
+    top: 0;
+    width: 236px;
+    z-index: 1000;
+
+    a:link,
+    a:visited {
+        @include transition(color 0.1s ease-in-out);
+        color: #fff;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        @include transition(color 0.1s ease-in-out);
+    }
+
+    a:focus {
+        outline: none;
+    }
+
+    .nav-drawer-close-button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        @include fira-sans-light;
+        @include font-size(13px);
+        @include transition(color 0.1s ease-in-out);
+        background: url('/media/img/nav/drawer-close.svg') left center no-repeat;
+        border: none;
+        color: #000;
+        height: 22px;
+        left: 10px;
+        margin-top: 30px;
+        padding: 0 0 0 30px;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+            @include transition(color 0.1s ease-in-out);
+            color: #fff;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-moz-focus-inner {
+            border: none;
+        }
+    }
+
+    .nav-menu-primary-links {
+        padding-top: 30px;
+
+        &> li {
+            margin: 20px 0;
+        }
+    }
+
+    .intro {
+        @include font-size(14px);
+        font-style: italic;
+        margin: 0 0 20px;
+    }
+
+    .summary {
+        @include font-size(18px);
+        padding-bottom: 20px;
+
+        a:link,
+        a:visited {
+            position: relative;
+            display: block;
+
+            &:after {
+                background-image: url('/media/img/nav/subnav-expand.svg');
+                content: '';
+                height: 12px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 12px;
+            }
+        }
+
+        &.selected {
+            a:link:after,
+            a:visited:after {
+                background-image: url('/media/img/nav/subnav-collapse.svg');
+            }
+        }
+    }
+
+    .detail-container {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 20px;
+    }
+
+    .nav-menu-secondary-links > li {
+        @include font-size(18px);
+        margin: 20px 0;
+
+        a:link,
+        a:visited {
+            display: block;
+        }
+    }
+}
+
+.moz-universal-nav,
+.moz-universal-nav-drawer {
+    .item-cyan {
+        a:hover,
+        a:active,
+        a:focus,
+        a.selected {
+            color: $color-brand-cyan;
+        }
+    }
+
+    .item-lilac {
+        a:hover,
+        a:active,
+        a:focus,
+        a.selected {
+            color: $color-brand-lilac;
+        }
+    }
+
+    .item-lime {
+        a:hover,
+        a:active,
+        a:focus,
+        a.selected {
+            color: $color-brand-lime;
+        }
+    }
+
+    .item-coral {
+        a:hover,
+        a:active,
+        a:focus,
+        a.selected {
+            color: $color-brand-coral;
+        }
+    }
+
+    .item-orange {
+        a:hover,
+        a:active,
+        a:focus,
+        a.selected {
+            color: $color-firefox-light-orange;
+        }
+    }
+}
+
+.moz-universal-nav-page-mask {
+    @include transition(opacity 0.2s ease-in-out);
+    background: #000;
+    bottom: auto;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: auto;
+    top: 0;
+    z-index: 10000;
+}
+
+html.moz-nav-open {
+    .moz-universal-nav-page-mask {
+        @include transition(opacity 0.2s ease-in-out);
+        opacity: 0.3;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+// Custom download button styles for Firefox section.
+#universal-nav-download-firefox {
+
+    .download-list > li {
+        margin: 0;
+    }
+
+    .download-link {
+        &:link,
+        &:visited {
+            @include font-size(14px);
+            @include transition(color 0.1s ease-in-out, background-color 0.1s ease-in-out);
+            background: inherit;
+            border-radius: 0;
+            border: 1px solid $color-firefox-light-orange;
+            color: $color-firefox-light-orange;
+            display: inline-block;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            @include transition(color 0.1s ease-in-out, background-color 0.1s ease-in-out);
+            background-color: $color-firefox-light-orange;
+            color: #000;
+        }
+    }
+
+    .unsupported-download,
+    .unrecognized-download {
+        @include font-size(13px);
+    }
+
+    .fx-privacy-link {
+        display: none;
+    }
+}
+
+// Default (non-animated) accordion for old browsers.
+.moz-universal-nav-drawer {
+
+    .detail {
+        display: none;
+    }
+
+    .summary.selected + .detail {
+        display: block;
+    }
+}
+
+// Animated accordion for newer browsers.
+@supports (transition: max-height .8s ease-out) {
+
+    .moz-universal-nav-drawer {
+
+        .detail {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .2s ease-out;
+        }
+
+        .summary.selected + .detail {
+            max-height: 1000px;
+            transition: max-height .8s ease-out;
+        }
+    }
+}
+
+// Default (non-animated) drawer for old browsers.
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+html.moz-nav-open {
+    body {
+        left: 320px;
+    }
+}
+
+// Animated drawer for newer browsers.
+@supports (transform: translateX(320px)) {
+    body {
+        position: static;
+        transition: transform .25s ease-in-out;
+    }
+
+    html.moz-nav-open {
+        body {
+            left: 0;
+            transition: transform .25s ease-in-out;
+            transform: translateX(320px);
+        }
+    }
+
+    .moz-universal-nav-drawer {
+        left: 0;
+        transform: translateX(-320px);
+        transition: transform .25s ease-in-out;
+    }
+}
